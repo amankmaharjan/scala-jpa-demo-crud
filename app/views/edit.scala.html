@@ -1,0 +1,18 @@
+@import form.UserForm
+
+@(user: UserModel, userForm: Form[UserForm.Data])(implicit request: MessagesRequestHeader)
+
+    @import helper._
+
+    @helper.form(action = routes.HomeController.update) {
+
+        @CSRF.formField @* <- takes a RequestHeader *@
+        <label>id:@userForm("id").value</label>
+        <input type="hidden" name="id" value=@userForm("id").value >
+
+        @helper.inputText(userForm("username")) @* <- takes a MessagesProvider *@
+        @helper.inputText(userForm("password")) @* <- takes a MessagesProvider *@
+        <button>Edit</button>
+        <a href="@routes.HomeController.index()">Cancel</a>
+
+    }

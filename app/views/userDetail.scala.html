@@ -1,0 +1,10 @@
+@import form.UserForm
+
+@(user: UserModel, userForm: Form[UserForm.Data])(implicit request: MessagesRequestHeader)
+
+<label>
+    name:@user.username
+</label>
+<label>
+    password:@user.password
+</label>
